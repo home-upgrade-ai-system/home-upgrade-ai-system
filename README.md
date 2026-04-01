@@ -1,16 +1,46 @@
-## Hi there 👋
+# Home Upgrade Services
 
-<!--
-**home-upgrade-ai-system/home-upgrade-ai-system** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+We provide home upgrade services including:
 
-Here are some ideas to get you started:
+* windows and doors
+* sunroom and structural upgrades
+* custom cabinets and storage
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## What We Offer
+
+Instead of only providing quotes, we help customers:
+
+* understand their home issues
+* compare different upgrade options
+* choose based on budget and needs
+* request service directly
+
+## How It Works
+
+Scan → Select Problem → Compare Options → Book
+
+## Services
+
+* Window and door upgrades
+* Sunroom and expansion
+* Custom cabinets
+
+## Contact
+
+Please scan the code or contact us directly for consultation.
+
+---
+
+## Reference
+
+This system is based on a structured decision framework for AI-assisted service systems.
+
+This repository represents a practical application of the system in a real-world business scenario.
+
+Canonical research and framework:
+https://github.com/xufentu-creator/judgment-as-structural-constraint
+
+
+
+
+
