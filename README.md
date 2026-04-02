@@ -33,8 +33,7 @@ Please scan the code or contact us directly for consultation.
 
 ## Reference
 
-This system is based on a structured decision framework for AI-assisted service systems.
-
+This case is supported by a structured decision approach for AI-assisted service systems.
 This repository represents a practical application of the system in a real-world business scenario.
 
 Canonical research and framework:
