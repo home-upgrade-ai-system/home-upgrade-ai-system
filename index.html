@@ -1,1136 +1,149 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>空间升级 AI 方案</title>
-    <style>
-        :root {
-            --bg-color: #f8f5f2;
-            --card-bg: #ffffff;
-            --accent-color: #1c1917;
-            --text-color: #292524;
-            --text-muted: #78716c;
-            --border-color: rgba(28, 25, 23, 0.08);
-            --input-bg: #ffffff;
-            --transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            min-height: 100vh;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(252, 250, 247, 0.85);
-            backdrop-filter: saturate(180%) blur(20px);
-            z-index: 1000;
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .logo {
-            font-weight: 900;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .header-phone {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-right: 1rem;
-            border: 1px solid var(--border-color);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            transition: var(--transition);
-        }
-
-        .header-phone:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-        }
-
-        nav {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        nav a:hover {
-            color: var(--accent-color);
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 5rem 1.5rem 2rem;
-        }
-
-        .page {
-            display: none;
-            flex-direction: column;
-            gap: 2rem;
-            animation: fadeIn 0.6s ease;
-        }
-
-        .page.active {
-            display: flex;
-        }
-
-        .tool-mode {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.5rem;
-        }
-
-        p.subtitle {
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
-        .btn {
-            background: var(--accent-color);
-            color: #ffffff;
-            border: none;
-            padding: 1.2rem;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-            text-decoration: none;
-        }
-
-        .btn:hover {
-            transform: scale(0.98);
-            opacity: 0.9;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--accent-color);
-            border: 1px solid var(--border-color);
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        input, textarea {
-            background: var(--input-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 1rem;
-            border-radius: 12px;
-            font-size: 1rem;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        input:focus, textarea:focus {
-            border-color: var(--accent-color);
-        }
-
-        .upload-area {
-            width: 100%;
-            aspect-ratio: 4/3;
-            border: 2px dashed var(--border-color);
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            overflow: hidden;
-            position: relative;
-            background: var(--card-bg);
-            transition: var(--transition);
-        }
-
-        .upload-area:active {
-            transform: scale(0.98);
-            border-color: var(--accent-color);
-        }
-
-        .upload-area input[type="file"] {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer;
-            z-index: 10;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .upload-area img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 5;
-        }
-
-        .upload-placeholder {
-            text-align: center;
-            color: var(--text-muted);
-            z-index: 1;
-            padding: 1rem;
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(252, 250, 247, 0.98);
-            z-index: 2000;
-            display: none;
-            flex-direction: column;
-            padding: 2rem;
-            overflow-y: auto;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 2rem;
-            color: var(--accent-color);
-            cursor: pointer;
-            z-index: 2001;
-        }
-
-        .detail-gallery {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin: 2rem 0;
-            max-width: 800px;
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .detail-img {
-            width: 100%;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
-
-        .detail-info {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .detail-info h2 {
-            margin-bottom: 1rem;
-        }
-
-        .preview-small {
-            width: 100%;
-            height: 150px;
-            border-radius: 15px;
-            object-fit: cover;
-            margin-bottom: 0.5rem;
-            border: 1px solid var(--border-color);
-            background: #f1ece7;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 6rem 0 4rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-            text-transform: uppercase;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--accent-color);
-            margin: 0.8rem auto;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .showcase-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-            cursor: pointer;
-            position: relative;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-
-        .showcase-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-        }
-
-        .showcase-card::after {
-            content: '查看详情 VIEW DETAILS';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.35);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: var(--transition);
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            font-weight: bold;
-        }
-
-        .showcase-card:hover::after {
-            opacity: 1;
-        }
-
-        .showcase-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            background: #f1ece7;
-        }
-
-        .showcase-info {
-            padding: 1.5rem;
-        }
-
-        .showcase-info h4 {
-            margin-bottom: 0.5rem;
-        }
-
-        .showcase-info p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .service-banner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .service-box {
-            background: linear-gradient(45deg, #fdfaf6, #f5f1ed);
-            padding: 2.5rem 1.5rem;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-        }
-
-        .service-box i {
-            font-size: 2rem;
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .process-flow {
-            margin: 4rem 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
-            position: relative;
-        }
-
-        .process-step {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            position: relative;
-            z-index: 1;
-            transition: var(--transition);
-        }
-
-        .process-step:hover {
-            border-color: var(--accent-color);
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background: var(--accent-color);
-            color: var(--bg-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            margin: 0 auto 1.5rem;
-            font-size: 0.9rem;
-        }
-
-        .process-step h4 {
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            letter-spacing: 1px;
-        }
-
-        .process-step p {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        .address-section {
-            background: var(--card-bg);
-            padding: 3rem 2rem;
-            border-radius: 24px;
-            text-align: center;
-            margin-top: 2rem;
-            border: 1px solid var(--border-color);
-        }
-
-        .address-text {
-            font-size: 1.2rem;
-            margin: 1rem 0;
-            color: var(--text-color);
-        }
-
-        .custom-input-box {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 1rem;
-            border-radius: 16px;
-            margin-bottom: 1rem;
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .custom-input-box input {
-            flex: 1;
-            padding: 0.8rem;
-        }
-
-        .visualization-result {
-            width: 100%;
-            border-radius: 20px;
-            margin-bottom: 1.5rem;
-            border: 2px solid var(--accent-color);
-            box-shadow: 0 10px 30px rgba(61, 43, 31, 0.1);
-            background: #f1ece7;
-            min-height: 260px;
-            object-fit: cover;
-        }
-
-        .analysis-badge {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #8c7e74;
-            font-weight: bold;
-        }
-
-        .cards-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 1.5rem;
-            border-radius: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: var(--transition);
-            gap: 1rem;
-        }
-
-        .card:hover {
-            border-color: #555;
-        }
-
-        .card-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .card-content p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .choose-btn {
-            padding: 0.6rem 1rem;
-            font-size: 0.85rem;
-            border-radius: 8px;
-            white-space: nowrap;
-        }
-
-        .success-screen {
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        .success-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            color: #00aa66;
-        }
-
-        .disclaimer {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-            text-align: center;
-            line-height: 1.4;
-        }
-
-        .security-note {
-            background: rgba(255, 255, 255, 0.6);
-            padding: 1rem;
-            border-radius: 10px;
-            font-size: 0.7rem;
-            color: #666;
-            margin-top: 1rem;
-            border: 1px solid var(--border-color);
-            line-height: 1.6;
-        }
-
-        .booking-choice-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .calendar-btn {
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        footer {
-            margin-top: 5rem;
-            padding: 3rem 1.5rem;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .footer-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-disclaimer {
-            margin-top: 2rem;
-            font-size: 0.65rem;
-            color: #a8a29e;
-            line-height: 1.5;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .footer-flow-tag {
-            font-size: 0.6rem;
-            color: var(--text-muted);
-            margin-top: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-        }
-
-        .corner-tag {
-            position: fixed;
-            bottom: 8px;
-            right: 12px;
-            font-size: 0.55rem;
-            color: #444;
-            opacity: 0.6;
-            z-index: 1001;
-            pointer-events: none;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        #loader {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(252, 250, 247, 0.95);
-            z-index: 2100;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .loader-text {
-            margin-top: 1.5rem;
-            font-weight: 500;
-            color: var(--accent-color);
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(61, 43, 31, 0.1);
-            border-top-color: var(--accent-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 1rem;
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-
-            nav {
-                gap: 1rem;
-            }
-
-            .service-banner {
-                grid-template-columns: 1fr;
-            }
-
-            .card {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .choose-btn {
-                width: 100%;
-            }
-
-            .corner-tag {
-                font-size: 0.45rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Los Angeles Doors, Windows & Home Upgrade Services</title>
+
+<meta name="description" content="Home upgrade services in Los Angeles specializing in doors, windows, soundproof systems, and custom interior solutions.">
+
+<!-- ⭐ 本地SEO JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["HomeAndConstructionBusiness", "LocalBusiness"],
+  "name": "客户店名",
+  "url": "https://home-upgrade-ai-system.github.io/home-upgrade-ai-system/",
+  "telephone": "+1-626-619-0066",
+  "description": "Home upgrade services specializing in doors, windows, soundproof windows, and custom interior solutions.",
+  "areaServed": "Los Angeles, CA",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Los Angeles",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "image": "https://home-upgrade-ai-system.github.io/home-upgrade-ai-system/images/plan-b.png"
+}
+</script>
+
+<style>
+body {
+    font-family: Arial;
+    margin:0;
+    background:#f5f6f8;
+    text-align:center;
+}
+.container {
+    padding:20px;
+}
+.btn {
+    padding:12px 18px;
+    margin:10px;
+    border:none;
+    border-radius:8px;
+    background:#111;
+    color:#fff;
+    cursor:pointer;
+}
+img {
+    width:90%;
+    max-width:500px;
+    border-radius:10px;
+    margin-top:10px;
+}
+.phone {
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#111;
+    color:#fff;
+    padding:12px;
+    border-radius:50%;
+}
+</style>
 </head>
+
 <body>
 
-    <div id="loader">
-        <div class="spinner"></div>
-        <div id="loaderMessage" class="loader-text">正在处理中...</div>
-    </div>
+<div class="container">
 
-    <div id="caseModal" class="modal-overlay">
-        <span class="modal-close" onclick="closeCaseDetails()">&times;</span>
-        <div class="detail-info">
-            <span class="analysis-badge" id="modalBadge">案例详情</span>
-            <h2 id="modalTitle">案例标题</h2>
-            <p id="modalDesc" class="subtitle"></p>
-        </div>
-        <div class="detail-gallery" id="modalGallery"></div>
-        <div style="text-align: center; margin-bottom: 3rem;">
-            <button class="btn" style="padding: 1.2rem 4rem;" onclick="navigateTo('page2'); closeCaseDetails();">预约同款 AI 设计</button>
-            <div style="margin-top: 1rem;">
-                <a href="tel:6266190066" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">咨询电话: 626.619.0066</a>
-            </div>
-        </div>
-    </div>
+<h1>Los Angeles Home Upgrade Services</h1>
+<p>Doors · Windows · Soundproof · Custom Interior</p>
 
-    <div class="corner-tag">结构化服务流程设计 Based on a structured service approach</div>
+<button class="btn" onclick="start()">Start AI Design</button>
 
-    <header>
-        <div class="logo">SJ CUSTOM</div>
-        <div style="display: flex; align-items: center;">
-            <a href="tel:6266190066" class="header-phone">📞 626.619.0066</a>
-            <nav>
-                <a href="#" onclick="navigateTo('page1'); return false;">首页</a>
-                <a href="#" onclick="navigateTo('page2'); return false;" style="color: var(--accent-color); font-weight: 600;">AI 设计</a>
-            </nav>
-        </div>
-    </header>
+<div id="step1" style="display:none">
+<h2>Select Upgrade Type</h2>
+<button class="btn" onclick="choose('Door Upgrade')">Door</button>
+<button class="btn" onclick="choose('Window Upgrade')">Window</button>
+<button class="btn" onclick="choose('Soundproof Window')">Soundproof</button>
+</div>
 
-    <div class="container">
-        <section id="page1" class="page active">
-            <div class="hero">
-                <h1>家装升级服务定制</h1>
-                <p class="subtitle">融合顶尖 AI 渲染技术与传统精湛工艺，为您打造理想家园。</p>
-                <div style="height: 2rem;"></div>
-                <button class="btn" style="padding: 1.2rem 3rem;" onclick="navigateTo('page2')">开启 AI 实时设计体验</button>
-            </div>
+<div id="step2" style="display:none">
+<h2>Select Plan</h2>
+<button class="btn" onclick="generate('Plan A - Basic')">Plan A</button>
+<button class="btn" onclick="generate('Plan B - Standard')">Plan B</button>
+<button class="btn" onclick="generate('Plan C - Premium')">Plan C</button>
+</div>
 
-            <div id="showcase">
-                <h2 class="section-title">实景案例与效果展示</h2>
-                <div class="grid-3" id="showcaseGrid"></div>
-            </div>
+<div id="step3" style="display:none">
+<h2>AI Generated Result</h2>
+<img id="resultImg" src="images/plan-a.png">
+<p id="desc"></p>
 
-            <div id="services">
-                <h2 class="section-title">核心业务</h2>
-                <div class="service-banner">
-                    <div class="service-box">
-                        <i>🏠</i>
-                        <h3>全屋定制</h3>
-                        <p>从玄关到卧室，每一寸空间都为您量身打造。</p>
-                    </div>
-                    <div class="service-box">
-                        <i>🪟</i>
-                        <h3>门窗升级</h3>
-                        <p>专业定制高端系统门窗，守护您的居家安全。</p>
-                    </div>
-                </div>
-            </div>
+<input id="custom" placeholder="Custom request (optional)">
+<br>
+<button class="btn" onclick="custom()">Generate Custom</button>
 
-            <div id="process">
-                <h2 class="section-title">标准服务流程</h2>
-                <div class="process-flow">
-                    <div class="process-step">
-                        <div class="step-number">01</div>
-                        <h4>AI 设计预约</h4>
-                        <p>上传实景照片，系统展示多套升级思路供您初步参考。</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">02</div>
-                        <h4>专业上门量尺</h4>
-                        <p>资深工程师免费上门，精准测量并核对墙体及光照细节。</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">03</div>
-                        <h4>方案深度定制</h4>
-                        <p>根据实测数据与您的预算，提供细化材料清单与最终施工图。</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">04</div>
-                        <h4>精细化施工</h4>
-                        <p>专业施工团队按照标准工法作业，全程透明监控，保证交付品质。</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">05</div>
-                        <h4>五星售后保障</h4>
-                        <p>全线产品享受质保支持，快速响应，让您的居所后顾无忧。</p>
-                    </div>
-                </div>
-            </div>
+<br><br>
+<a href="tel:+16266190066" class="btn">Call Now</a>
+</div>
 
-            <div class="address-section">
-                <h2 class="section-title">预约与咨询</h2>
-                <p class="subtitle">欢迎联系我们的专业团队或亲临展厅。</p>
-                <div style="margin: 2rem 0;">
-                    <a href="tel:6266190066" style="display: block; font-size: 2rem; color: var(--accent-color); text-decoration: none; font-weight: 700; margin-bottom: 0.5rem;">626-619-0066</a>
-                    <p class="text-muted" style="margin-bottom: 2rem;">点击拨打电话即刻沟通需求</p>
+</div>
 
-                    <a href="https://www.google.com/maps/search/?api=1&query=4020+Rosemead+Blvd+Rosemead+CA+91770" target="_blank" style="text-decoration: none;">
-                        <div class="address-text" style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); display: inline-block;">
-                            📍 4020 Rosemead Blvd, Rosemead, CA 91770
-                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">点击开启导航</div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
+<div class="phone">
+📞
+</div>
 
-        <section id="page2" class="page tool-mode">
-            <h2>AI 空间诊断</h2>
-            <p class="subtitle">上传现场照片，让系统为您提供初步升级思路</p>
-            <div class="upload-area">
-                <input type="file" id="fileInput" accept="image/*" onchange="handleImageUpload(event)">
-                <div id="uploadPlaceholder" class="upload-placeholder">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📸</div>
-                    <p>点击拍照或从相册上传照片</p>
-                    <p style="font-size: 0.75rem; margin-top: 0.5rem; opacity: 0.7;">支持即时拍摄及图库选择</p>
-                </div>
-                <img id="imagePreview" style="display: none;" alt="上传预览">
-            </div>
+<script>
 
-            <div class="input-group">
-                <input type="text" id="improveInput" placeholder="您想改善什么？(例如：这扇门太旧了)">
-            </div>
+function start(){
+    document.getElementById('step1').style.display='block';
+}
 
-            <button class="btn" onclick="generatePlans()">生成方案</button>
-            <button class="btn btn-outline" onclick="navigateTo('page1')">返回</button>
-        </section>
+function choose(v){
+    window.type=v;
+    document.getElementById('step2').style.display='block';
+}
 
-        <section id="page3" class="page tool-mode">
-            <img id="resultImagePreview" class="preview-small" alt="结果预览">
-            <div class="analysis-badge">人工决策 • AI 建议</div>
-            <p id="userQuestionDisplay" style="font-style: italic; color: var(--text-muted); margin-bottom: 0.5rem;"></p>
+function generate(plan){
+    let img="images/plan-c.png";
+    if(plan.includes("A")) img="images/plan-a.png";
+    if(plan.includes("B")) img="images/plan-b.png";
 
-            <div class="custom-input-box">
-                <input type="text" id="customKeyword" placeholder="输入自定义关键词...">
-                <button class="btn choose-btn" onclick="generateCustomVisualization()">生成</button>
-            </div>
+    document.getElementById('resultImg').src=img;
+    document.getElementById('desc').innerText=plan+" for "+window.type;
 
-            <div class="cards-container">
-                <div class="card">
-                    <div class="card-content">
-                        <h3>方案 A：基础修复</h3>
-                        <p>经济实惠，解决核心问题</p>
-                    </div>
-                    <button class="btn choose-btn" onclick="generateVisualization('方案 A：基础修复')">生成效果</button>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <h3>方案 B：中档升级</h3>
-                        <p>现代风格，品质提升</p>
-                    </div>
-                    <button class="btn choose-btn" onclick="generateVisualization('方案 B：中档升级')">生成效果</button>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <h3>方案 C：高端定制</h3>
-                        <p>奢华设计，极致工艺</p>
-                    </div>
-                    <button class="btn choose-btn" onclick="generateVisualization('方案 C：高端定制')">生成效果</button>
-                </div>
-            </div>
-            <button class="btn btn-outline" onclick="navigateTo('page2')">返回</button>
-        </section>
+    document.getElementById('step3').style.display='block';
+}
 
-        <section id="pageVisualization" class="page tool-mode">
-            <div class="analysis-badge">AI 效果展示</div>
-            <h2>渲染结果</h2>
-            <img id="aiGeneratedImage" class="visualization-result" src="plan-a.png" alt="AI 效果图">
-            <p class="disclaimer">免责声明：图片仅供参考，不代表最终施工效果。</p>
-            <p id="vizPlanDescription" class="subtitle" style="margin-top: 1rem; margin-bottom: 1rem; color: var(--text-color);"></p>
+function custom(){
+    let text=document.getElementById('custom').value;
+    document.getElementById('desc').innerText="Custom: "+text;
+    document.getElementById('resultImg').src="images/plan-b.png";
+}
 
-            <button class="btn" onclick="navigateTo('page4')">预约上门量尺寸</button>
-            <button class="btn btn-outline" onclick="navigateTo('page3')">返回重新选择</button>
-        </section>
+</script>
 
-        <section id="page4" class="page tool-mode">
-            <h2>预约上门量尺寸</h2>
-            <p class="subtitle">点击下方按钮进入预约系统，完成预约即可领取定制升级方案。</p>
-            <p class="subtitle" id="selectedPlanDisplay" style="color: var(--accent-color); font-weight: bold;">已选方案：方案 A</p>
+<!-- ⚠️ 合规免责声明 -->
+<div style="margin:40px; font-size:12px; color:#777">
+This website provides visual references and design suggestions only.  
+Images are for demonstration purposes and actual results may vary.  
+No construction, safety, or engineering advice is provided.  
+All services subject to on-site evaluation and agreement.
+</div>
 
-            <div class="booking-choice-container">
-                <a href="https://cal.com/jin-shang-ypfgpj" target="_blank" class="btn calendar-btn" onclick="handleBookingClick()">
-                    <span>📅 立即预约量尺寸</span>
-                </a>
-            </div>
-
-            <div class="security-note">
-                <strong>数据安全及免责声明：</strong><br>
-                1. 预约系统由 Cal.com 提供支持，您的预约信息将直接同步至我们的服务后台，用于安排技术人员上门，我们承诺对您的隐私严格保密。<br>
-                2. 页面展示的效果图及方案仅作为设计方向参考，不作为最终施工验收标准。具体施工细节、材料规格及价格请以技术人员实地测量后的最终合同为准。
-            </div>
-
-            <button class="btn btn-outline" onclick="navigateTo('pageVisualization')" style="margin-top: 1rem;">返回</button>
-        </section>
-
-        <section id="successPage" class="page tool-mode">
-            <div class="success-screen">
-                <div class="success-icon">✓</div>
-                <h2>预约跳转完成</h2>
-                <p class="subtitle">请在预约页面完成时间选择，我们的团队会尽快联系您。</p>
-                <div style="height: 2rem;"></div>
-                <button class="btn btn-outline" onclick="location.reload()">完成</button>
-            </div>
-        </section>
-
-        <footer>
-            <div class="footer-content">
-                <div class="footer-item">© 2024 SJ CUSTOM</div>
-                <div class="footer-item">📞 626.619.0066</div>
-                <div class="footer-item">📍 4020 Rosemead Blvd, Rosemead, CA</div>
-            </div>
-            <div class="footer-disclaimer">
-                案例及效果展示图仅供参考，最终以实测合同为准。我们严格保护您的个人隐私，信息仅用于服务沟通。
-            </div>
-            <div class="footer-flow-tag">STRUCTURED SERVICE APPROACH</div>
-        </footer>
-    </div>
-
-    <script>
-        const showcaseData = [
-            {
-                id: 'case1',
-                code: 'SJ-001',
-                badge: '门系列',
-                title: '高端入户门',
-                desc: '现代设计与安全结合',
-                mainImg: 'door-main.png',
-                details: ['door-main.png']
-            },
-            {
-                id: 'case2',
-                code: 'SJ-002',
-                badge: '门系列',
-                title: '室内木门',
-                desc: '极简风格，静音舒适',
-                mainImg: 'wood-door.png',
-                details: ['wood-door.png']
-            },
-            {
-                id: 'case3',
-                code: 'SJ-003',
-                badge: '系统窗',
-                title: '断桥铝门窗',
-                desc: '隔音隔热性能强',
-                mainImg: 'window.png',
-                details: ['window.png']
-            },
-            {
-                id: 'case4',
-                code: 'SJ-004',
-                badge: '厨房',
-                title: '现代厨房',
-                desc: '智能化设计',
-                mainImg: 'kitchen.png',
-                details: ['kitchen.png']
-            },
-            {
-                id: 'case5',
-                code: 'SJ-005',
-                badge: '衣帽间',
-                title: '定制衣帽间',
-                desc: '收纳与美学结合',
-                mainImg: 'closet.png',
-                details: ['closet.png']
-            },
-            {
-                id: 'case6',
-                code: 'SJ-006',
-                badge: '卫浴',
-                title: '现代卫浴',
-                desc: '干湿分离设计',
-                mainImg: 'bathroom.png',
-                details: ['bathroom.png']
-            },
-            {
-                id: 'case7',
-                code: 'SJ-007',
-                badge: '客厅',
-                title: '电视背景墙',
-                desc: '简约高级感',
-                mainImg: 'tvwall.png',
-                details: ['tvwall.png']
-            },
-            {
-                id: 'case8',
-                code: 'SJ-008',
-                badge: '书房',
-                title: '定制书房',
-                desc: '安静高效空间',
-                mainImg: 'office.png',
-                details: ['office.png']
-            },
-            {
-                id: 'case9',
-                code: 'SJ-009',
-                badge: '阳光房',
-                title: '阳光房设计',
-                desc: '空间延伸体验',
-                mainImg: 'sunroom.png',
-                details: ['sunroom.png']
-            },
-            {
-                id: 'case10',
-                code: 'SJ-010',
-                badge: '隔音窗',
-                title: '卧室隔音窗',
-                desc: '深度降噪',
-                mainImg: 'soundproof-window.png',
-                details: ['soundproof-window.png']
-            }
-        ];
-
-        window.uploadedImageData = null;
-        window.selectedPlan = "";
-
-        function renderShowcase() {
-            const grid = document.getElementById('showcaseGrid');
-            grid.innerHTML = showcaseData.map(item => `
-                <div class="showcase-card" onclick="openCaseDetails('${item.id}')">
-                    <img src="${item.mainImg}" alt="${item.title}" class="showcase-img">
-                    <div class="showcase-info">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
-                            <span class="analysis-badge">${item.badge}</span>
-                            <span style="font-size:0.6rem; color:#444; font-family:monospace;">${item.code}</span>
-                        </div>
-                        <h4>${item.title}</h4>
-                        <p>${item.desc}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        window.openCaseDetails = function(id) {
-            const item = showcaseData.find(d => d.id === id);
-            if (!item) return;
-
-            document.getElementById('modalBadge').innerText = item.badge;
-            document.getElementById('modalTitle').innerText = item.title;
-            document.getElementById('modalDesc').innerText = item.desc;
-
-            const gallery = document.getElementById('modalGallery');
-            gallery.innerHTML = item.details.map(img => `
-                <img src="${img}" class="detail-img" alt="Detail View">
-            `).join('');
-
-            document.getElementById('caseModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        window.closeCaseDetails = function() {
-            document.getElementById('caseModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        window.navigateTo = function(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-            window.scrollTo(0, 0);
-        }
-
-        window.handleImageUpload = function(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                window.uploadedImageData = e.target.result;
-
-                const img = document.getElementById('imagePreview');
-                img.src = window.uploadedImageData;
-                img.style.display = 'block';
-
-                document.getElementById('uploadPlaceholder').style.display = 'none';
-                document.getElementById('resultImagePreview').src = window.uploadedImageData;
-            };
-            reader.readAsDataURL(file);
-        }
-
-        window.generatePlans = function() {
-            const query = document.getElementById('improveInput').value || "整体空间升级";
-
-            if (!window.uploadedImageData) {
-                alert("请先上传一张照片。");
-                return;
-            }
-
-            document.getElementById('userQuestionDisplay').innerText = `“${query}”`;
-            navigateTo('page3');
-        }
-
-        window.generateVisualization = function(planDesc) {
-            window.selectedPlan = planDesc;
-
-            let img = "plan-c.png";
-            if (planDesc.includes("A")) {
-                img = "plan-a.png";
-            } else if (planDesc.includes("B")) {
-                img = "plan-b.png";
-            } else if (planDesc.includes("C")) {
-                img = "plan-c.png";
-            }
-
-            document.getElementById('aiGeneratedImage').src = img;
-            document.getElementById('vizPlanDescription').innerText = `已生成：${planDesc}`;
-            document.getElementById('selectedPlanDisplay').innerText = `已选方案：${planDesc}`;
-
-            navigateTo('pageVisualization');
-        }
-
-        window.generateCustomVisualization = function() {
-            const customKeyword = document.getElementById('customKeyword').value.trim();
-            const finalDesc = customKeyword ? `自定义升级：${customKeyword}` : '自定义升级';
-
-            window.selectedPlan = finalDesc;
-            document.getElementById('aiGeneratedImage').src = 'plan-b.png';
-            document.getElementById('vizPlanDescription').innerText = `已生成：${finalDesc}`;
-            document.getElementById('selectedPlanDisplay').innerText = `已选方案：${finalDesc}`;
-
-            navigateTo('pageVisualization');
-        }
-
-        window.handleBookingClick = function() {
-            setTimeout(() => {
-                navigateTo('successPage');
-            }, 600);
-        }
-
-        renderShowcase();
-    </script>
 </body>
 </html>
