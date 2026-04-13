@@ -1,45 +1,35 @@
-# Home Upgrade Services
+# SJ Home Improvement
 
-We provide home upgrade services including:
+We provide home improvement services in Los Angeles and surrounding areas, including:
 
-* windows and doors
-* sunroom and structural upgrades
-* custom cabinets and storage
+- windows and doors
+- sunroom and structural upgrades
+- custom closets, cabinets, and storage systems
 
 ## What We Offer
 
-Instead of only providing quotes, we help customers:
+We help customers:
 
-* understand their home issues
-* compare different upgrade options
-* choose based on budget and needs
-* request service directly
+- understand their space and upgrade needs
+- compare different options
+- choose based on budget and style
+- request on-site measurement and consultation
 
 ## How It Works
 
-Scan → Select Problem → Compare Options → Book
+Photo or Call → Discuss Needs → Compare Options → Book On-Site Visit
 
 ## Services
 
-* Window and door upgrades
-* Sunroom and expansion
-* Custom cabinets
+- Window and door upgrades
+- Soundproof window solutions
+- Sunroom and expansion
+- Custom closets and cabinets
+- Interior storage solutions
 
 ## Contact
 
-Please scan the code or contact us directly for consultation.
+Call us directly for consultation and on-site measurement.
 
----
-
-## Reference
-
-This case is supported by a structured decision approach for AI-assisted service systems.
-This repository represents a practical application of the system in a real-world business scenario.
-
-Canonical research and framework:
-https://github.com/xufentu-creator/judgment-as-structural-constraint
-
-
-
-
-
+Phone: 626-619-0066  
+Address: 4020 Rosemead Blvd, Rosemead, CA 91770
