@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SJ Home Improvement | Windows & Doors in Los Angeles</title>
-  <meta name="description" content="SJ Home Improvement provides window replacement, door installation, custom cabinets, and home upgrade services in Los Angeles and surrounding areas." />
+
+  <title>SJ Home Improvement | Windows, Doors & Custom Cabinets</title>
+  <meta name="description" content="SJ Home Improvement provides window replacement, door installation, custom cabinets, and home upgrade services in Los Angeles and Rosemead. Free design and on-site measurement available." />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": ["HomeAndConstructionBusiness", "LocalBusiness"],
     "name": "SJ Home Improvement",
+    "alternateName": "SJ家装升级服务",
     "url": "https://home-upgrade-ai-system.github.io/home-upgrade-ai-system/",
     "telephone": "+1-626-619-0066",
-    "description": "SJ Home Improvement provides window replacement, door installation, custom cabinets, and home upgrade services in Los Angeles and surrounding areas.",
+    "description": "Window replacement, door installation, custom cabinets, and home improvement services in Los Angeles and Rosemead.",
     "areaServed": ["Los Angeles, CA", "Rosemead, CA", "San Gabriel Valley, CA"],
     "address": {
       "@type": "PostalAddress",
@@ -29,824 +31,467 @@
 
   <style>
     :root {
-      --bg: #f7f4ef;
+      --bg: #f6f2ec;
       --card: #ffffff;
       --text: #1f1a17;
-      --muted: #786f67;
-      --line: rgba(31, 26, 23, 0.08);
-      --primary: #1f1a17;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-      --radius: 22px;
-      --transition: all 0.3s ease;
+      --muted: #6f665f;
+      --line: rgba(31, 26, 23, 0.1);
+      --dark: #1f1a17;
+      --shadow: 0 12px 32px rgba(0,0,0,0.08);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     }
 
     body {
       background: var(--bg);
       color: var(--text);
-      overflow-x: hidden;
       line-height: 1.6;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
-    img {
-      display: block;
-      width: 100%;
-    }
-
-.zh {
-  display: inline;
-  font-size: 0.9em;
-  color: inherit;
-  margin-left: 6px;
-}
-
-    .muted-zh {
-      display: block;
-      font-size: 0.92em;
-      color: var(--muted);
-      margin-top: 2px;
+    .zh {
+      font-size: 0.9em;
+      margin-left: 6px;
     }
 
     header {
+      background: rgba(255,255,255,0.92);
+      border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
-      z-index: 1000;
-      background: rgba(250, 248, 245, 0.92);
-      backdrop-filter: saturate(180%) blur(16px);
-      border-bottom: 1px solid var(--line);
+      z-index: 10;
+      backdrop-filter: blur(14px);
     }
 
     .nav {
-      max-width: 1180px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 14px 18px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 12px;
     }
 
-    .logo {
-      font-size: 1rem;
+    .brand {
       font-weight: 900;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      white-space: nowrap;
+      letter-spacing: 0.5px;
+      line-height: 1.25;
     }
 
-    .nav-right {
+    .brand small {
+      display: block;
+      font-weight: 500;
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 2px;
+    }
+
+    .nav-actions {
       display: flex;
-      align-items: center;
       gap: 10px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
 
-    .nav-pill {
-      font-size: 0.86rem;
-      color: var(--muted);
-      background: #fff;
+    .pill {
       border: 1px solid var(--line);
-      padding: 10px 14px;
+      background: #fff;
       border-radius: 999px;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      line-height: 1.35;
-    }
-
-    .nav-pill:hover {
-      border-color: var(--primary);
-      color: var(--primary);
+      padding: 9px 14px;
+      font-size: 0.88rem;
+      font-weight: 700;
     }
 
     .container {
-      max-width: 1180px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 24px 18px 56px;
+      padding: 22px 18px 50px;
     }
 
     .hero {
-      padding: 28px 0 18px;
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 22px;
+      align-items: stretch;
+      min-height: 560px;
     }
 
-    .hero-card {
-      background: linear-gradient(135deg, #faf8f5 0%, #f1ebe3 100%);
+    .hero-text {
+      background: var(--card);
       border: 1px solid var(--line);
       border-radius: 30px;
-      overflow: hidden;
+      padding: 54px 42px;
       box-shadow: var(--shadow);
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      align-items: stretch;
-      min-height: 540px;
-    }
-
-    .hero-left {
-      padding: 56px 42px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    .eyebrow {
+    .label {
       display: inline-block;
-      align-self: flex-start;
-      background: #fff;
+      width: fit-content;
+      background: #f4eee7;
       border: 1px solid var(--line);
-      color: #8b7d72;
       border-radius: 999px;
       padding: 8px 14px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      letter-spacing: 1.2px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #8a7a6e;
+      margin-bottom: 18px;
       text-transform: uppercase;
-      margin-bottom: 16px;
-      line-height: 1.4;
+      letter-spacing: 1px;
     }
 
     h1 {
-      font-size: 3.2rem;
-      line-height: 1.08;
+      font-size: 3rem;
+      line-height: 1.05;
       letter-spacing: -1.3px;
-      margin-bottom: 14px;
-      font-weight: 800;
+      margin-bottom: 16px;
     }
 
-    .hero-text {
-      font-size: 1.03rem;
-      line-height: 1.85;
+    .subtitle {
+      font-size: 1.1rem;
       color: var(--muted);
       max-width: 620px;
       margin-bottom: 24px;
     }
 
-    .hero-points {
+    .quick-points {
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 26px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
     }
 
-    .hero-points span {
-      background: rgba(255,255,255,0.85);
+    .quick-points span {
+      background: #faf7f3;
       border: 1px solid var(--line);
       border-radius: 999px;
-      padding: 10px 14px;
-      font-size: 0.88rem;
-      color: #5f554f;
-      font-weight: 600;
-      line-height: 1.35;
-      text-align: center;
+      padding: 9px 13px;
+      font-weight: 700;
+      font-size: 0.9rem;
     }
 
-    .hero-actions {
+    .buttons {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
     .btn {
       display: inline-flex;
-      align-items: center;
       justify-content: center;
-      gap: 8px;
-      border: none;
-      border-radius: 14px;
-      cursor: pointer;
-      transition: var(--transition);
+      align-items: center;
+      min-width: 190px;
       padding: 15px 22px;
-      font-size: 0.96rem;
-      font-weight: 700;
-      min-width: 220px;
+      border-radius: 14px;
+      font-weight: 900;
+      border: 1px solid var(--dark);
+      transition: all 0.2s ease;
       text-align: center;
-      line-height: 1.35;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
     .btn-primary {
-      background: var(--primary);
+      background: var(--dark);
       color: #fff;
-      box-shadow: var(--shadow);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      opacity: 0.96;
     }
 
     .btn-secondary {
       background: #fff;
-      color: var(--primary);
+      color: var(--dark);
+    }
+
+    .phone-large {
+      margin-top: 22px;
+      font-size: 1.55rem;
+      font-weight: 900;
+    }
+
+    .hero-image {
+      border-radius: 30px;
+      overflow: hidden;
       border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: #ddd;
     }
 
-    .btn-secondary:hover {
-      transform: translateY(-2px);
-      border-color: var(--primary);
-    }
-
-    .hero-right img {
+    .hero-image img {
       width: 100%;
       height: 100%;
-      min-height: 540px;
+      min-height: 560px;
       object-fit: cover;
-      background: #e9e1d7;
+      display: block;
     }
 
     .section {
-      margin-top: 56px;
+      margin-top: 34px;
+    }
+
+    .simple-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 28px 22px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
     }
 
     .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
       text-align: center;
-      font-size: 1.9rem;
-      font-weight: 800;
-      letter-spacing: -0.6px;
-      margin-bottom: 12px;
-      line-height: 1.25;
     }
 
-    .section-subtitle {
-      text-align: center;
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 760px;
-      margin: 0 auto 28px;
-      font-size: 0.98rem;
-    }
-
-    .service-grid {
+    .services {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 14px;
     }
 
-    .service-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 26px 22px;
-      text-align: center;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.04);
-      transition: var(--transition);
-    }
-
-    .service-card:hover {
-      transform: translateY(-3px);
-    }
-
-    .service-icon {
-      font-size: 2rem;
-      margin-bottom: 12px;
-    }
-
-    .service-card h3 {
-      font-size: 1.06rem;
-      margin-bottom: 8px;
-      line-height: 1.35;
-    }
-
-    .service-card p {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.92rem;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .gallery-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      overflow: hidden;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.04);
-      transition: var(--transition);
-    }
-
-    .gallery-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 28px rgba(0,0,0,0.07);
-    }
-
-    .gallery-card img {
-      height: 240px;
-      object-fit: cover;
-      background: #e9e1d7;
-    }
-
-    .gallery-info {
-      padding: 16px 16px 18px;
-    }
-
-    .gallery-info h4 {
-      font-size: 1rem;
-      margin-bottom: 6px;
-      line-height: 1.35;
-    }
-
-    .gallery-info p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .cta-box {
-      background: linear-gradient(135deg, #1f1a17 0%, #342d28 100%);
-      color: #fff;
-      border-radius: 28px;
-      padding: 42px 24px;
-      text-align: center;
-      box-shadow: 0 18px 38px rgba(0,0,0,0.12);
-    }
-
-    .cta-box h2 {
-      font-size: 2rem;
-      margin-bottom: 12px;
-      letter-spacing: -0.6px;
-      line-height: 1.25;
-    }
-
-    .cta-box p {
-      max-width: 760px;
-      margin: 0 auto 22px;
-      color: rgba(255,255,255,0.84);
-      line-height: 1.85;
-      font-size: 1rem;
-    }
-
-    .cta-badge {
-      display: inline-block;
-      margin-bottom: 22px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 999px;
-      padding: 10px 16px;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.9);
-      font-weight: 600;
-      line-height: 1.35;
-    }
-
-    .contact-box {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 34px 24px;
-      text-align: center;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.04);
-    }
-
-    .contact-box h2 {
-      font-size: 1.75rem;
-      margin-bottom: 10px;
-      line-height: 1.25;
-    }
-
-    .contact-box p {
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 12px;
-    }
-
-    .big-phone {
-      display: inline-block;
-      font-size: 2rem;
-      font-weight: 800;
-      margin: 8px 0 12px;
-      color: var(--primary);
-      line-height: 1.2;
-    }
-
-    .address-link {
-      display: inline-block;
-      margin-top: 10px;
+    .service {
       background: #faf7f3;
       border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 16px 18px;
-      transition: var(--transition);
-      line-height: 1.5;
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
     }
 
-    .address-link:hover {
-      transform: translateY(-2px);
-      border-color: rgba(31, 26, 23, 0.16);
+    .service h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
     }
 
-    .address-main {
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .address-sub {
-      font-size: 0.84rem;
+    .service p {
       color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .bottom-cta {
+      margin-top: 34px;
+      background: var(--dark);
+      color: #fff;
+      border-radius: 28px;
+      padding: 34px 22px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .bottom-cta h2 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .bottom-cta p {
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 18px;
+    }
+
+    .bottom-cta .btn {
+      background: #fff;
+      color: var(--dark);
+      border-color: #fff;
+    }
+
+    .contact {
+      margin-top: 34px;
+      text-align: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 28px 20px;
+    }
+
+    .contact h2 {
+      margin-bottom: 8px;
+    }
+
+    .contact p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .address {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 13px 16px;
+      background: #faf7f3;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      font-weight: 700;
     }
 
     footer {
-      margin-top: 48px;
-      padding-top: 24px;
+      margin-top: 34px;
+      padding-top: 18px;
       border-top: 1px solid var(--line);
       text-align: center;
+      color: #9a918a;
+      font-size: 0.78rem;
     }
 
-    .footer-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px 24px;
-      color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.5;
-    }
-
-    .footer-note {
-      margin-top: 14px;
-      color: #a09790;
-      font-size: 0.7rem;
-      line-height: 1.65;
-      max-width: 760px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @media (max-width: 980px) {
-      .hero-card {
+    @media (max-width: 900px) {
+      .hero {
         grid-template-columns: 1fr;
       }
 
-      .hero-right img {
+      .hero-image img {
         min-height: 320px;
       }
 
-      .service-grid,
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 680px) {
-      .nav {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .nav-right {
-        justify-content: center;
-      }
-
-      .hero-left {
-        padding: 32px 22px;
+      .services {
+        grid-template-columns: 1fr;
       }
 
       h1 {
         font-size: 2.25rem;
       }
+    }
 
-      .hero-right img {
-        min-height: 240px;
+    @media (max-width: 620px) {
+      .nav {
+        flex-direction: column;
+        align-items: stretch;
       }
 
-      .service-grid,
-      .gallery-grid {
-        grid-template-columns: 1fr;
+      .nav-actions {
+        justify-content: center;
       }
 
-      .big-phone {
-        font-size: 1.6rem;
-      }
-
-      .cta-box h2 {
-        font-size: 1.56rem;
+      .hero-text {
+        padding: 34px 22px;
       }
 
       .btn {
         width: 100%;
       }
+
+      .phone-large {
+        text-align: center;
+      }
     }
   </style>
 </head>
-<body>
 
+<body>
   <header>
     <div class="nav">
-      <div class="logo">SJ Home Improvement</div>
-      <div class="nav-right">
-        <a class="nav-pill" href="tel:6266190066">
-          Call Now
-          <span class="zh">立即电话咨询</span>
-        </a>
-        <a class="nav-pill" href="https://bb369tech.github.io/bb369-platform/industries/windows.html">
-          Free Design
-          <span class="zh">免费设计</span>
-        </a>
+      <div class="brand">
+        SJ Home Improvement
+        <small>SJ家装升级服务</small>
+      </div>
+      <div class="nav-actions">
+        <a class="pill" href="tel:6266190066">Call 626-619-0066</a>
+        <a class="pill" href="https://bb369tech.github.io/bb369-platform/industries/windows.html">Free Design</a>
       </div>
     </div>
   </header>
 
   <main class="container">
     <section class="hero">
-      <div class="hero-card">
-        <div class="hero-left">
-          <div class="eyebrow">
-            Los Angeles Window & Door Service
-            <span class="zh">洛杉矶门窗与家装服务</span>
-          </div>
+      <div class="hero-text">
+        <div class="label">Los Angeles · Rosemead</div>
 
-          <h1>
-            Windows & Doors That Fit Your Home
-            <span class="zh">适合您家的门窗升级方案</span>
-          </h1>
+        <h1>
+          Windows, Doors & Custom Cabinets
+          <span class="zh">门窗 · 全屋定制</span>
+        </h1>
 
-          <p class="hero-text">
-            SJ Home Improvement provides window replacement, door installation, custom cabinets, and home upgrade services in Los Angeles and surrounding areas.
-            <span class="muted-zh">SJ Home Improvement 提供窗户更换、门安装、定制柜体及家居升级服务，覆盖洛杉矶及周边地区。</span>
-          </p>
-
-          <div class="hero-points">
-            <span>
-              Free Design
-              <span class="zh">免费设计</span>
-            </span>
-            <span>
-              On-site Measurement
-              <span class="zh">上门测量</span>
-            </span>
-            <span>
-              Local Service
-              <span class="zh">本地服务</span>
-            </span>
-          </div>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="https://bb369tech.github.io/bb369-platform/industries/windows.html">
-              Start Free Design
-              <span class="zh">开始免费设计</span>
-            </a>
-            <a class="btn btn-secondary" href="tel:6266190066">
-              Call Now
-              <span class="zh">立即电话咨询</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-right">
-          <img src="images/plan-b.png" alt="SJ Home Improvement windows and doors service in Los Angeles" />
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="services">
-      <h2 class="section-title">
-        Our Services
-        <span class="zh">我们的服务</span>
-      </h2>
-
-      <p class="section-subtitle">
-        We help homeowners in Los Angeles improve comfort, style, and function with simple upgrade solutions.
-        <span class="muted-zh">我们帮助洛杉矶家庭通过更简单的升级方案，提升舒适度、外观和实用性。</span>
-      </p>
-
-      <div class="service-grid">
-        <div class="service-card">
-          <div class="service-icon">🪟</div>
-          <h3>
-            Window Replacement
-            <span class="zh">窗户更换</span>
-          </h3>
-          <p>
-            Replace old windows with cleaner, stronger, and better-performing options for daily comfort in Los Angeles homes.
-            <span class="muted-zh">更换老旧窗户，提升采光、隔音、保温和日常舒适度。</span>
-          </p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">🚪</div>
-          <h3>
-            Door Installation
-            <span class="zh">门安装与更换</span>
-          </h3>
-          <p>
-            Entry doors and interior doors with a better look, better fit, and a more finished result for your home.
-            <span class="muted-zh">入户门和室内门安装升级，让家里更美观、更实用、更完整。</span>
-          </p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">🪵</div>
-          <h3>
-            Custom Cabinets
-            <span class="zh">全屋定制柜体</span>
-          </h3>
-          <p>
-            Closets, storage, kitchen cabinets, and other built-in solutions made for your space and daily use.
-            <span class="muted-zh">包括衣柜、收纳柜、橱柜和其他定制柜体，按空间和使用需求设计。</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <h2 class="section-title">
-        Project Inspiration
-        <span class="zh">案例与风格参考</span>
-      </h2>
-
-      <p class="section-subtitle">
-        Take a look at some common upgrade styles for windows, doors, kitchens, and custom storage in Los Angeles homes.
-        <span class="muted-zh">看看洛杉矶家庭常见的门窗、厨房和定制收纳升级风格。</span>
-      </p>
-
-      <div class="gallery-grid">
-        <div class="gallery-card">
-          <img src="images/door-main.png" alt="Premium entry door installation in Los Angeles" />
-          <div class="gallery-info">
-            <h4>
-              Premium Entry Door
-              <span class="zh">高端入户门</span>
-            </h4>
-            <p>
-              A cleaner front entrance with a stronger look and better everyday function.
-              <span class="muted-zh">让门头更有质感，也提升安全性和日常使用体验。</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <img src="images/wood-door.png" alt="Interior wood door installation" />
-          <div class="gallery-info">
-            <h4>
-              Interior Wood Door
-              <span class="zh">室内木门</span>
-            </h4>
-            <p>
-              Simple lines and warm texture for a more finished and comfortable interior space.
-              <span class="muted-zh">极简线条和温暖材质，让室内空间更完整、更舒适。</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <img src="images/window.png" alt="Window replacement and upgrade" />
-          <div class="gallery-info">
-            <h4>
-              Window Upgrade
-              <span class="zh">窗户升级</span>
-            </h4>
-            <p>
-              Better light, better insulation, and a cleaner overall appearance for the home.
-              <span class="muted-zh">改善采光、保温与整体外观，让家里更舒适更美观。</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <img src="images/kitchen.png" alt="Modern kitchen cabinet upgrade" />
-          <div class="gallery-info">
-            <h4>
-              Modern Kitchen
-              <span class="zh">现代厨房</span>
-            </h4>
-            <p>
-              Practical storage and a fresh design for a more organized daily kitchen experience.
-              <span class="muted-zh">收纳更合理，风格更整洁，让厨房更适合日常使用。</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <img src="images/closet.png" alt="Custom closet design" />
-          <div class="gallery-info">
-            <h4>
-              Custom Closet
-              <span class="zh">定制衣柜</span>
-            </h4>
-            <p>
-              Built for better organization, cleaner layout, and easier use of the available space.
-              <span class="muted-zh">提升收纳效率，布局更整齐，空间利用更合理。</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <img src="images/bathroom.png" alt="Bathroom home upgrade project" />
-          <div class="gallery-info">
-            <h4>
-              Bathroom Upgrade
-              <span class="zh">卫浴升级</span>
-            </h4>
-            <p>
-              A simple way to improve the visual feel and usability of your home interior.
-              <span class="muted-zh">让卫浴空间更清爽、更实用，整体体验更好。</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="cta-box">
-        <div class="cta-badge">
-          Free Design • Simple Start • Local Service
-          <span class="zh">免费设计 · 流程简单 · 本地服务</span>
-        </div>
-
-        <h2>
-          Not Sure What Fits Your Home Best?
-          <span class="zh">不知道哪种方案更适合您家？</span>
-        </h2>
-
-        <p>
-          Start with a free design. Tell us what you want to improve, upload your project photo, and move directly to the next step.
-          <span class="zh">从免费设计开始。告诉我们您想改善的地方，上传项目照片，就可以直接进入下一步。</span>
+        <p class="subtitle">
+          Free design and on-site measurement for windows, doors, sunrooms, and custom storage projects.
+          <br>
+          免费设计 · 上门量尺 · 门窗与全屋定制服务
         </p>
 
-        <a class="btn btn-secondary" href="https://bb369tech.github.io/bb369-platform/industries/windows.html" style="min-width:220px;">
-          Start Free Design
-          <span class="zh">开始免费设计</span>
-        </a>
-      </div>
-    </section>
+        <div class="quick-points">
+          <span>Window Replacement</span>
+          <span>Door Installation</span>
+          <span>Custom Cabinets</span>
+        </div>
 
-    <section class="section">
-      <div class="contact-box">
-        <h2>
-          Contact & Appointment
-          <span class="zh">联系与预约</span>
-        </h2>
+        <div class="buttons">
+          <a class="btn btn-primary" href="https://bb369tech.github.io/bb369-platform/industries/windows.html">
+            Get Free Design
+            <span class="zh">免费设计方案</span>
+          </a>
 
-        <p>
-          Serving Los Angeles and surrounding areas. Call us directly for project details, design discussion, and measurement scheduling.
-          <span class="muted-zh">服务覆盖洛杉矶及周边地区，欢迎来电咨询项目细节、设计沟通和上门测量安排。</span>
-        </p>
-
-        <a class="big-phone" href="tel:6266190066">
-          626-619-0066
-          <span class="zh">电话咨询</span>
-        </a>
-
-        <div>
-          <a
-            class="address-link"
-            href="https://www.google.com/maps/search/?api=1&query=4020+Rosemead+Blvd+Rosemead+CA+91770"
-            target="_blank"
-          >
-            <div class="address-main">
-              📍 4020 Rosemead Blvd, Rosemead, CA 91770
-            </div>
-            <div class="address-sub">
-              Open map for directions
-              <span class="zh">点击打开地图导航</span>
-            </div>
+          <a class="btn btn-secondary" href="tel:6266190066">
+            Call Now
+            <span class="zh">立即咨询</span>
           </a>
         </div>
+
+        <a class="phone-large" href="tel:6266190066">626-619-0066</a>
+      </div>
+
+      <div class="hero-image">
+        <img src="images/storefront.jpg" alt="SJ Home Improvement storefront in Rosemead" />
+      </div>
+    </section>
+
+    <section class="section simple-card">
+      <h2 class="section-title">Services <span class="zh">服务项目</span></h2>
+
+      <div class="services">
+        <div class="service">
+          <h3>Windows & Doors <span class="zh">门窗</span></h3>
+          <p>Replacement, repair, installation, and upgrades.</p>
+        </div>
+
+        <div class="service">
+          <h3>Custom Cabinets <span class="zh">全屋定制</span></h3>
+          <p>Closets, cabinets, storage, and built-in solutions.</p>
+        </div>
+
+        <div class="service">
+          <h3>Sunroom & Remodeling <span class="zh">阳光房与装修</span></h3>
+          <p>Sunrooms, ADU support, and home upgrade projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom-cta">
+      <h2>Start with a Free Design <span class="zh">从免费设计开始</span></h2>
+      <p>Upload project details or book measurement to move forward.</p>
+      <a class="btn" href="https://bb369tech.github.io/bb369-platform/industries/windows.html">
+        Get Free Design
+        <span class="zh">免费设计方案</span>
+      </a>
+    </section>
+
+    <section class="contact">
+      <h2>Contact <span class="zh">联系咨询</span></h2>
+      <p>Serving Los Angeles, Rosemead, and surrounding areas.</p>
+
+      <a class="phone-large" href="tel:6266190066">626-619-0066</a>
+
+      <div>
+        <a class="address"
+          href="https://www.google.com/maps/search/?api=1&query=4020+Rosemead+Blvd+Rosemead+CA+91770"
+          target="_blank">
+          📍 4020 Rosemead Blvd, Rosemead, CA 91770
+        </a>
       </div>
     </section>
 
     <footer>
-      <div class="footer-row">
-        <div>
-          © 2026 SJ Home Improvement
-          <span class="zh">SJ Home Improvement</span>
-        </div>
-        <div>
-          📞 626-619-0066
-          <span class="zh">电话咨询</span>
-        </div>
-        <div>
-          📍 Rosemead, Los Angeles Area
-          <span class="zh">洛杉矶地区服务</span>
-        </div>
-      </div>
-
-      <div class="footer-note">
-        This website provides business information and service examples only. Final pricing, materials, scope, and scheduling remain subject to actual site conditions and confirmed agreement.
-        <br>
-        本网站仅展示业务信息和服务案例，最终价格、材料、施工范围及时间安排以现场情况和最终确认为准。
-      </div>
+      Details and pricing may vary. Final plan confirmed on-site.
+      <br>
+      具体方案和价格以现场确认为准。
     </footer>
   </main>
-
 </body>
 </html>
