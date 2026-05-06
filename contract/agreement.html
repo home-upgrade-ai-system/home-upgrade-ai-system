@@ -1,8 +1,14 @@
+<h2>Windows & Doors Project Agreement</h2>
+
+<p style="color:#666; margin-bottom:24px;">
+Please review your project details, pricing, and installation information before submission.
+</p>
+
 <!-- Merchant routing fields -->
 <input type="hidden" name="merchantId" value="sj-windows-001">
 <input type="hidden" name="businessName" value="SJ Home Upgrade Service">
 <input type="hidden" name="page" value="windows-agreement">
-<input type="hidden" name="scenario" value="Agreement Submission">
+<input type="hidden" name="scenario" value="Project Agreement Submission">
 
 <h3>1. Customer Information</h3>
 
@@ -15,57 +21,84 @@
 
 <label>
   <input type="radio" name="selectedOption" value="Material Supply Only" required>
-  Option A: Material Supply Only (No Installation)
+  Option A · Material Supply Only
 </label>
+
+<br><br>
 
 <label>
   <input type="radio" name="selectedOption" value="Material + Installation Referral" required>
-  Option B: Material + Installation Referral
+  Option B · Material + Installation Coordination
 </label>
 
-<h3>3. Material Supply Agreement</h3>
+<h3>3. Material Information</h3>
 
 <div class="box">
-  <p>The company provides windows, doors, and related materials, including product consultation and basic coordination.</p>
 
-  <p><strong>Customer confirms:</strong></p>
+  <p>
+    The company provides windows, doors, and related materials, including product consultation and project coordination.
+  </p>
+
+  <p><strong>Customer Confirmation</strong></p>
+
   <ul>
-    <li>All sizes, specifications, and selections are confirmed by the customer.</li>
-    <li>Final pricing may change based on actual measurements, material selection, or site conditions.</li>
+    <li>All measurements, specifications, and product selections must be reviewed and confirmed before installation.</li>
+
+    <li>Final pricing may vary depending on measurements, material selections, and site conditions.</li>
   </ul>
 
-  <p><strong>The company is responsible for:</strong></p>
+  <p><strong>Company Services</strong></p>
+
   <ul>
-    <li>Supplying materials</li>
-    <li>Basic coordination</li>
+    <li>Material supply and product coordination</li>
+
+    <li>Project communication and scheduling assistance</li>
   </ul>
 
-  <p><strong>The company is NOT responsible for:</strong></p>
+  <p><strong>Additional Notes</strong></p>
+
   <ul>
-    <li>Installation work</li>
-    <li>Structural modifications</li>
-    <li>Labor or workmanship quality</li>
+    <li>Structural modifications or additional construction work may require separate contractor review.</li>
+
+    <li>Installation timelines may vary depending on site conditions and product availability.</li>
   </ul>
+
 </div>
 
-<h3>4. Installation Notice</h3>
+<h3>4. Installation Information</h3>
 
 <div class="box">
-  <p><strong>Applies only if Option B is selected.</strong></p>
 
-  <p>Customer acknowledges that installation services are performed by licensed independent contractors. The company does not directly perform installation work.</p>
+  <p>
+    Applies only if Option B is selected.
+  </p>
 
-  <p>The company may assist with coordination and payment facilitation, but does not assume responsibility for installation services, construction delays, job site risks, or installation outcomes.</p>
+  <p>
+    Installation services are performed by licensed independent contractors.
+  </p>
+
+  <p>
+    Our team may assist with scheduling, communication, and project coordination throughout the installation process.
+  </p>
+
+  <p>
+    Final installation scheduling and completion timelines may vary depending on project conditions and contractor availability.
+  </p>
+
 </div>
 
-<h3>5. Pricing & Payment</h3>
+<h3>5. Pricing & Project Notes</h3>
 
 <input type="text" name="materialCost" placeholder="Material Cost ($)">
-<input type="text" name="installationCost" placeholder="Installation Cost ($, if applicable)">
 
-<textarea name="message" placeholder="Project details, product selections, size notes, or special requests" required></textarea>
-<p>
-  The company may collect total payment on behalf of the project.
-  Installation-related payments will be transferred to the actual contractor.
-  The company acts only as a coordination and payment facilitation party.
+<input type="text" name="installationCost" placeholder="Installation Cost ($ if applicable)">
+
+<textarea 
+  name="message" 
+  placeholder="Project details, product selections, measurements, or special requests" 
+  required
+></textarea>
+
+<p style="color:#666; font-size:14px; margin-top:12px;">
+Project pricing, scheduling, and installation arrangements will be reviewed and confirmed before final execution.
 </p>
