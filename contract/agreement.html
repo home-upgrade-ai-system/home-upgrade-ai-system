@@ -1,3 +1,5 @@
+<form id="agreementForm">
+
 <h2>Windows & Doors Project Agreement</h2>
 
 <p style="color:#666; margin-bottom:24px;">
@@ -13,8 +15,11 @@ Please review your project details, pricing, and installation information before
 <h3>1. Customer Information</h3>
 
 <input type="text" name="name" placeholder="Full Name" required>
+
 <input type="email" name="email" placeholder="Email Address" required>
+
 <input type="text" name="phone" placeholder="Phone Number" required>
+
 <input type="text" name="projectAddress" placeholder="Project Address" required>
 
 <h3>2. Service Selection</h3>
@@ -42,9 +47,13 @@ Please review your project details, pricing, and installation information before
   <p><strong>Customer Confirmation</strong></p>
 
   <ul>
-    <li>All measurements, specifications, and product selections must be reviewed and confirmed before installation.</li>
+    <li>
+      All measurements, specifications, and product selections must be reviewed and confirmed before installation.
+    </li>
 
-    <li>Final pricing may vary depending on measurements, material selections, and site conditions.</li>
+    <li>
+      Final pricing may vary depending on measurements, material selections, and site conditions.
+    </li>
   </ul>
 
   <p><strong>Company Services</strong></p>
@@ -58,9 +67,13 @@ Please review your project details, pricing, and installation information before
   <p><strong>Additional Notes</strong></p>
 
   <ul>
-    <li>Structural modifications or additional construction work may require separate contractor review.</li>
+    <li>
+      Structural modifications or additional construction work may require separate contractor review.
+    </li>
 
-    <li>Installation timelines may vary depending on site conditions and product availability.</li>
+    <li>
+      Installation timelines may vary depending on site conditions and product availability.
+    </li>
   </ul>
 
 </div>
@@ -95,10 +108,86 @@ Please review your project details, pricing, and installation information before
 
 <textarea 
   name="message" 
-  placeholder="Project details, product selections, measurements, or special requests" 
+  placeholder="Project details, product selections, measurements, preferred schedule, or special requests" 
   required
 ></textarea>
 
 <p style="color:#666; font-size:14px; margin-top:12px;">
 Project pricing, scheduling, and installation arrangements will be reviewed and confirmed before final execution.
 </p>
+
+<h3>6. Customer Agreement & Signature</h3>
+
+<label>
+  <input type="checkbox" required>
+  I have reviewed the project information and agree to submit this request for review.
+</label>
+
+<br><br>
+
+<input 
+  type="text" 
+  name="signature" 
+  placeholder="Customer Full Name / Signature" 
+  required
+>
+
+<input 
+  type="date" 
+  name="signedDate" 
+  required
+>
+
+<br><br>
+
+<button class="btn" type="submit">
+  Submit Agreement →
+</button>
+
+</form>
+
+<script>
+const form = document.getElementById("agreementForm");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+
+  try {
+
+    const response = await fetch(
+      "https://bb369-sendgrid-api.onrender.com/submit",
+      {
+        method: "POST",
+        body: formData
+      }
+    );
+
+    const result = await response.json();
+
+    if (result.success) {
+
+      alert(
+        "Submitted successfully. A confirmation email has been sent."
+      );
+
+      form.reset();
+
+    } else {
+
+      alert(
+        "Submission failed. Please check required fields."
+      );
+    }
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      "Server connection failed. Please try again later."
+    );
+  }
+});
+</script>
