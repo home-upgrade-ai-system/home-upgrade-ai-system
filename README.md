@@ -33,3 +33,10 @@ Call us directly for consultation and on-site measurement.
 
 Phone: 626-619-0066  
 Address: 4020 Rosemead Blvd, Rosemead, CA 91770
+
+## Online Request
+
+Customers can also start with a photo-based service request through the BB369TECH platform.
+
+Request Page: https://platform.bb369tech.com/industries/windows.html
+
